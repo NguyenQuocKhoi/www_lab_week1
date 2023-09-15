@@ -5,8 +5,16 @@
   <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
+<form action="ControllerServlet" method="post" >
+  <input type="hidden" name="action" value="xxx">
+  <input type="submit" value="Call xxx"/>
+
+</form>
+
+<hr/>
+<form action="ControllerServlet" method="post">
+  <input type="hidden" name="action" value="yyy">
+  <input type="submit" value="Call yyy"/>
+</form>
 </body>
 </html>
