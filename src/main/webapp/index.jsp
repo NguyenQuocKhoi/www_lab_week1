@@ -5,28 +5,46 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<%--<form action="ControllerServlet" method="post" >--%>
-<%--  <input type="hidden" name="action" value="xxx">--%>
-<%--  <input type="submit" value="Call xxx"/>--%>
+<div class="main">
+    <section class="sign-in">
+        <div class="container">
+            <div class="signin-content" style="text-align: center">
+                    <h1>Sign in</h1>
+                    <form method="post" action="login"
+                          id="login-form">
+                        <div class="form-group">
+                            <label for="username" style="width: 200px; height: 50px; margin-left: 21px">Email: </label>
+                            <input type="text" style="width: 200px;  margin-bottom: 10px" name="username" id="username"
+                                   placeholder="Email"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" style="width: 200px" >Password: </label>
+                            <input type="password" style="width: 200px ;margin-bottom: 10px" name="password" id="password"
+                                   placeholder="Password"/>
+                        </div>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signin" id="signin" style="margin-bottom: 10px; margin-right: 33px"
+                                   class="form-submit" value="Log in"/>
+                            <input type="reset" name="clear" id="clear" style="margin-bottom: 10px;"
+                                   class="form-submit" value="Clear"/>
+                        </div>
 
-<%--</form>--%>
+                        <c:if test="${not empty status}">
+                            <p class="text-center text-success">${status}</p>
+                            <c:remove var="status"/>
+                        </c:if>
+                        <c:if test="${not empty status2}">
+                            <p class="text-center text-success">${status2}</p>
+                            <c:remove var="status2"/>
+                        </c:if>
+                    </form>
 
-<%--<hr/>--%>
-<%--<form action="ControllerServlet" method="post">--%>
-<%--  <input type="hidden" name="action" value="yyy">--%>
-<%--  <input type="submit" value="Call yyy"/>--%>
-<%--</form>--%>
-<h1>Login</h1>
-<form action="ControllerServlet" method="post">
-    <label for="name">Username:</label>
-    <input type="text" id="name" width=100 style="margin-left: 7px">
-    <br>
-    <label for="password">Password:</label>
-    <input type="text" id="password" width=100 style="margin-left: 10px; margin-bottom: 10px">
-    <br>
-    <input type="submit" value="Login" style="margin-left: 80px">
-    <input type="submit" value="Clear" >
-    <br>
-</form>
+            </div>
+
+
+        </div>
+    </section>
+</div>
+
 </body>
 </html>

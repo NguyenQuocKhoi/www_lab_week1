@@ -25,6 +25,8 @@ dependencies {
   compileOnly('jakarta.platform:jakarta.jakartaee-web-api:9.1.0')
 // https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
   implementation 'org.mariadb.jdbc:mariadb-java-client:3.2.0'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+  implementation 'org.slf4j:slf4j-api:1.7.30'
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
   testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")

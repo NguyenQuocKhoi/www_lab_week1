@@ -68,6 +68,12 @@ public class Account {
         this.status = status;
     }
 
+    public Account(String fullName, String email, String phone) {
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
