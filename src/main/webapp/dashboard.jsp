@@ -16,8 +16,8 @@
 
 </head>
 <body>
-<%@include file="./menu.jsp"%>
-<div class="col-xs-12" style="height: 1090px; width: 960px; margin: auto;" >
+<%@include file="./menu.jsp" %>
+<div class="col-xs-12" style="height: 1090px; width: 960px; margin: auto;">
     <h4 style="text-align:center;">Danh sách các Account</h4>
     <table class="table table-striped" role="table">
         <form action="" method="post">
@@ -30,23 +30,23 @@
                 <th>Role</th>
                 <th></th>
                 <th></th>
-                <th></th>
+
             </tr>
             <tbody>
             <% AccountRepository accountRepository = new AccountRepository(
                     ConnectDB.getConnection());
                 List<Object[]> list = accountRepository.getAccount();
                 for (int i = 0; i < list.size(); i++) {
-                  String status = String.valueOf(Integer.parseInt(list.get(i)[4].toString()));
-                  if(status.equalsIgnoreCase("1")){
-                    status = "Active";
-                  }
-                  if(status.equalsIgnoreCase("0")){
-                      status = "Deactive";
-                  }
-                  if(status.equalsIgnoreCase("-1")){
-                    status = "Xoa";
-                  }
+                    String status = String.valueOf(Integer.parseInt(list.get(i)[4].toString()));
+                    if (status.equalsIgnoreCase("1")) {
+                        status = "Active";
+                    }
+                    if (status.equalsIgnoreCase("0")) {
+                        status = "Deactive";
+                    }
+                    if (status.equalsIgnoreCase("-1")) {
+                        status = "Xoa";
+                    }
             %>
             <tr>
                 <td><%= list.get(i)[0].toString() %>
@@ -62,19 +62,31 @@
                 <td><%= list.get(i)[5].toString() %>
                 </td>
 
-                <td><input type="button" name="edit" id="edit" value="Edit" /></td>
-                <td><input type="button" name="delete" id="delete" value="Delete"/></td>
-                <td><a href="addRole.jsp"><input type="button" name="addrole" id="addrole" value="Add Role"/> </a>
-                    </td>
+                <td><a href="./updateAccount.jsp?id=<%=list.get(i)[0].toString() %>"><input class="btn btn-primary"
+                        type="button" name="edit" id="edit" value="Edit" /></a></td>
+                <td><a href="deleteAcc?id=<%=list.get(i)[0].toString() %>"><input type="button" class="btn btn-danger"
+                                                                                  name="edit"
+                                                                                  id="delete"
+                                                                                  value="Delete"/></a>
+                </td>
             </tr>
             <%
                 }
             %>
             </tbody>
+
+
         </form>
     </table>
 
-
+<%--    <%--%>
+<%--        String id = request.getParameter("id");--%>
+<%--        accountRepository = new AccountRepository(--%>
+<%--                ConnectDB.getConnection());--%>
+<%--        Account account = accountRepository.getAccountByID(id);--%>
+<%--    %>--%>
+<%--    <p><%=account.getAccountId()%>--%>
+<%--    </p>--%>
 </div>
 
 </body>

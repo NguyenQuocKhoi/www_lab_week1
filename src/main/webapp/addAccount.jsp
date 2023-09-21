@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Thêm tài khoản</title>
     <%@include file="./css.jsp" %>
 </head>
 <body>
@@ -25,7 +25,7 @@
 
 
                         <label for="pw" class="control-label col-xs-3">Password</label>
-                        <input type="text" name="pass" id="pw" class="form-control">
+                        <input type="password" name="pass" id="pw" class="form-control">
 
 
                         <label for="email" class="control-label col-xs-3">Email</label>
@@ -55,15 +55,15 @@
 
                 </form>
 
-                <c:if test="${not empty success}">
-                    <p class="text-center text-success">${success}</p>
-                    <c:remove var="success"/>
+                <c:if test="${not empty success5}">
+                    <p class="text-center text-success">${success5}</p>
+                    <c:remove var="success5"/>
 
                 </c:if>
 
-                <c:if test="${not empty error}">
-                    <p class="text-center text-success">${error}</p>
-                    <c:remove var="error"/>
+                <c:if test="${not empty error5}">
+                    <p class="text-center text-success">${error5}</p>
+                    <c:remove var="error5"/>
                 </c:if>
             </div>
         </div>

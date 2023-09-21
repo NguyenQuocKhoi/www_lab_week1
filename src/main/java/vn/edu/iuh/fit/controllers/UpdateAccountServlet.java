@@ -11,8 +11,8 @@ import vn.edu.iuh.fit.entities.Account;
 import vn.edu.iuh.fit.repositories.AccountRepository;
 import vn.edu.iuh.fit.repositories.ConnectDB;
 
-@WebServlet("/register")
-public class AddAccountServlet  extends HttpServlet {
+@WebServlet("/updateAcc")
+public class UpdateAccountServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -25,16 +25,15 @@ public class AddAccountServlet  extends HttpServlet {
     int status = Integer.parseInt(req.getParameter("statuss"));
     Account account = new Account(id, fullName, pass, email, phone, status);
     AccountRepository accountRepository = new AccountRepository(ConnectDB.getConnection());
-    boolean addAccount = accountRepository.addAccount(account);
-    HttpSession session = req.getSession();
-    if(addAccount) {
-      session.setAttribute("success5", "\n"
-          + "Account added successfully");
-      resp.sendRedirect("addAccount.jsp");
 
+    boolean updateAcc = accountRepository.updateAccount(account);
+    HttpSession session = req.getSession();
+    if(updateAcc){
+      session.setAttribute("success2", "Update account complete");
+      resp.sendRedirect("index.jsp");
     }else {
-      session.setAttribute("error5", "Failed");
-      resp.sendRedirect("addAccount.jsp");
+      session.setAttribute("error2", "Update failed");
+      resp.sendRedirect("index.jsp");
     }
   }
 }

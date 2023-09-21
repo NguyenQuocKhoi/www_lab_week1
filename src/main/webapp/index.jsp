@@ -2,32 +2,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Đăng nhập</title>
+    <%@include file="css.jsp"%>
 </head>
 <body>
-<div class="main">
-    <section class="sign-in">
-        <div class="container">
-            <div class="signin-content" style="text-align: center">
+<div class="container p-4">
+        <div class="row" style="margin-top:10px;">
+            <div class="content" style="height: 1090px; width: 960px; margin: auto">
                     <h1>Sign in</h1>
-                    <form method="post" action="login"
-                          id="login-form">
-                        <div class="form-group">
-                            <label for="username" style="width: 200px; height: 50px; margin-left: 21px">Email: </label>
-                            <input type="text" style="width: 200px;  margin-bottom: 10px" name="username" id="username"
+                <div class="body" style="margin-top: 10px">
+                    <form method="post" action="login">
+                            <label for="username" class="control-label col-xs-3">Email: </label>
+                            <input type="text" class="form-control" name="username" id="username" style="width: 600px"
                                    placeholder="Email"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password" style="width: 200px" >Password: </label>
-                            <input type="password" style="width: 200px ;margin-bottom: 10px" name="password" id="password"
+
+
+                            <label for="password" class="control-label col-xs-3" >Password: </label>
+                            <input type="password"  class="form-control" name="password" id="password" style="width: 600px"
                                    placeholder="Password"/>
-                        </div>
-                        <div class="form-group form-button">
-                            <input type="submit" name="signin" id="signin" style="margin-bottom: 10px; margin-right: 33px"
-                                   class="form-submit" value="Log in"/>
-                            <input type="reset" name="clear" id="clear" style="margin-bottom: 10px;"
-                                   class="form-submit" value="Clear"/>
-                        </div>
+
+
+                            <input type="submit" name="signin" id="signin" style="color: white; margin-top: 10px; background-color: blue; width: 100px;"
+                                   class="btn btn-group-justified" value="Log in"/>
+                            <input type="reset" name="clear" id="clear" style="color: white; margin-top: 10px; background-color: blue; width: 100px;"
+                                   class="btn btn-group-justified" value="Clear"/>
+
 
                         <c:if test="${not empty status}">
                             <p class="text-center text-success">${status}</p>
@@ -40,10 +39,9 @@
                     </form>
 
             </div>
-
+            </div>
 
         </div>
-    </section>
 </div>
 
 </body>

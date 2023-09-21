@@ -36,11 +36,11 @@ public class AddroleServlet extends HttpServlet {
     HttpSession session  = req.getSession();
 
     if(addRole){
-      session.setAttribute("success", "Add Role Complete");
+      session.setAttribute("success1", "Add Role Complete");
       resp.sendRedirect("addRole.jsp");
     }
     else {
-      session.setAttribute("error", "Failed");
+      session.setAttribute("error1", "Failed");
       resp.sendRedirect("addRole.jsp");
     }
 

@@ -35,18 +35,19 @@ public class AccountServlet extends HttpServlet {
       requestDispatcher = req.getRequestDispatcher("index.jsp");
       requestDispatcher.forward(req, resp);
     }
-    else if (account!=null && roleName.equalsIgnoreCase("user")){
-      session.setAttribute("fullName", account.getFullName());
-      session.setAttribute("phone", account.getPhone());
-      requestDispatcher = req.getRequestDispatcher("dashboard1.jsp");
-    }
-    else if(account!=null && roleName.equalsIgnoreCase("admin")){
+    if(account!=null ){
       session.setAttribute("account_id", account.getAccountId());
       session.setAttribute("fullName", account.getFullName());
       session.setAttribute("phone", account.getPhone());
       session.setAttribute("status", account.getStatus());
       requestDispatcher = req.getRequestDispatcher("dashboard.jsp");
     }
+//    else if (account!=null && roleName.equalsIgnoreCase("user")){
+//      session.setAttribute("fullName", account.getFullName());
+//      session.setAttribute("phone", account.getPhone());
+//      requestDispatcher = req.getRequestDispatcher("dashboard1.jsp");
+//    }
+
 
     else {
       req.setAttribute("status2", "Wrong Email or Password");
