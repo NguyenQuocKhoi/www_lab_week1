@@ -23,10 +23,10 @@ public class DeleteAccountServlet extends HttpServlet {
     HttpSession session = req.getSession();
     if(deleteAcc) {
       session.setAttribute("success3","Delete Complete");
-      resp.sendRedirect("index.jsp");
+      resp.sendRedirect("dashboard.jsp");
     }else {
       session.setAttribute("errorDelete","Delete failed");
-      resp.sendRedirect("index.jsp");
+      resp.sendRedirect("dashboard.jsp");
     }
   }
 }
