@@ -20,22 +20,19 @@ public class FindAccServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     String id = req.getParameter("id");
-//    String fullName = req.getParameter("fullName");
-//    String pass = req.getParameter("pass");
-//    String email = req.getParameter("email");
-//    String phone = req.getParameter("phone");
-//    int status = Integer.parseInt(req.getParameter("statuss"));
 
     RoleRepository roleRepository = new RoleRepository(ConnectDB.getConnection());
     List<Account> list = roleRepository.findRole(id);
     HttpSession session = req.getSession();
-    for (Account account : list) {
-      session.setAttribute("account_id", account.getAccountId());
-      session.setAttribute("fullName", account.getFullName());
-      session.setAttribute("email", account.getEmail());
-      session.setAttribute("phone", account.getPhone());
-      session.setAttribute("status", account.getStatus());
-      resp.sendRedirect("findRole.jsp");
+    if(list!=null){
+      for (Account account:  list) {
+        session.setAttribute("account_id", account.getAccountId());
+        session.setAttribute("fullName", account.getFullName());
+        session.setAttribute("email", account.getEmail());
+        session.setAttribute("phone", account.getPhone());
+        session.setAttribute("status", account.getStatus());
+        resp.sendRedirect("findRole.jsp");
+      }
     }
   }
 }

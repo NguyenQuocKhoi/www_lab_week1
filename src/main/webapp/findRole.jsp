@@ -33,33 +33,34 @@
                         <option>admin</option>
                         <option>user</option>
                     </select>
+                    <%
+                        RoleRepository roleRepository = new RoleRepository(ConnectDB.getConnection());
+                        List<Account> list = roleRepository.findRole("id");
+                        for(Account account: list){
+                    %>
                 </th>
                 <th></th>
 
             </tr>
             <tbody>
-<%--            <% String id = request.getParameter("id");--%>
-<%--                RoleRepository roleRepository = new RoleRepository(ConnectDB.getConnection());--%>
-<%--                List<Account> list = roleRepository.findRole(id);--%>
-<%--                for(Account account: list){--%>
-<%--            %>--%>
-<%--            <tr>--%>
-<%--                <td><%=account.getAccountId() %>--%>
-<%--                </td>--%>
-<%--                <td><%= account.getFullName() %>--%>
-<%--                </td>--%>
-<%--                <td><%= account.getEmail() %>--%>
-<%--                </td>--%>
-<%--                <td><%= account.getPhone() %>--%>
-<%--                </td>--%>
-<%--                <td><%= account.getStatus()%>--%>
-<%--                </td>--%>
 
-<%--            </tr>--%>
+            <tr>
+                <td><%=account.getAccountId() %>
+                </td>
+                <td><%= account.getFullName() %>
+                </td>
+                <td><%= account.getEmail() %>
+                </td>
+                <td><%= account.getPhone() %>
+                </td>
+                <td><%= account.getStatus()%>
+                </td>
 
-<%--            <%--%>
-<%--                }--%>
-<%--                %>--%>
+            </tr>
+
+            <%
+                }
+                %>
             </tbody>
 
 

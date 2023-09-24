@@ -57,7 +57,7 @@ public class AccountRepository {
     return account;
   }
 
-  public Account getAccount(String id) {
+  public Account getAccountByID(String id) {
     Account account = null;
     try {
       String sql = "select * from account where account_id = ?";
@@ -162,20 +162,5 @@ public class AccountRepository {
     return n > 0;
   }
 
-  public Account getAccountByID(String id) {
-    Account account = null;
-    try {
-      String sql = "select account_id from account where account_id = ?";
-      PreparedStatement preparedStatement = connection.prepareStatement(sql);
-      preparedStatement.setString(1, id);
-      ResultSet rs = preparedStatement.executeQuery();
-      while (rs.next()) {
-        account = new Account();
-        account.setAccountId(rs.getString(1));
-      }
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return account;
-  }
+
 }

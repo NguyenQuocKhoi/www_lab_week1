@@ -31,14 +31,17 @@ public class RoleRepository {
     return n > 0;
   }
 
-  public String getRole() {
+  public String getRoleByEmail(String email) {
     String roleName = "";
     try {
-      String sql = "SELECT role.role_id as roleName\n"
+      String sql = "SELECT grant_access.role_id as roleName\n"
           + "FROM     account INNER JOIN\n"
           + "                  grant_access ON account.account_id = grant_access.account_id INNER JOIN\n"
-          + "                  role ON grant_access.role_id = role.role_id";
+          + "                  role ON grant_access.role_id = role.role_id\n"
+          + "WHERE account.email = ?";
+
       PreparedStatement preparedStatement = connection.prepareStatement(sql);
+      preparedStatement.setString(1, email);
       ResultSet rs = preparedStatement.executeQuery();
       if (rs.next()) {
         roleName = rs.getString("roleName");
@@ -50,7 +53,7 @@ public class RoleRepository {
   }
 
 
-  public GrantAccess getGrantA(String id) {
+  public GrantAccess getGrantBRoleId(String id) {
     GrantAccess grantAccess = null;
     String sql =
         "SELECT role.role_id, account.account_id, grant_access.is_grant, grant_access.note\n"

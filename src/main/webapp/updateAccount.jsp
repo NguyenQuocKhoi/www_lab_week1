@@ -23,7 +23,7 @@
                         String id = request.getParameter("id");
                         AccountRepository accountRepository = new AccountRepository(
                                 ConnectDB.getConnection());
-                        Account account = accountRepository.getAccount(id);
+                        Account account = accountRepository.getAccountByID(id);
                     %>
                     <label for="fullName" class="control-label col-xs-3">Full Name</label>
                     <input type="text" name="fullName" id="fullName" class="form-control"

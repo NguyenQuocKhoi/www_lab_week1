@@ -23,9 +23,10 @@ public class AccountServlet extends HttpServlet {
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     RoleRepository roleRepository = new RoleRepository(ConnectDB.getConnection());
-    String roleName = roleRepository.getRole();
+
   String userName = req.getParameter("username");
   String passWord = req.getParameter("password");
+    String roleName = roleRepository.getRoleByEmail(userName);
     AccountRepository accountRepository = new AccountRepository(ConnectDB.getConnection());
     Account account  = accountRepository.login(userName, passWord);
     HttpSession session = req.getSession();
@@ -35,18 +36,18 @@ public class AccountServlet extends HttpServlet {
       requestDispatcher = req.getRequestDispatcher("index.jsp");
       requestDispatcher.forward(req, resp);
     }
-    if(account!=null ){
+    else if(account!=null  && roleName.equalsIgnoreCase("admin")){
       session.setAttribute("account_id", account.getAccountId());
       session.setAttribute("fullName", account.getFullName());
       session.setAttribute("phone", account.getPhone());
       session.setAttribute("status", account.getStatus());
       requestDispatcher = req.getRequestDispatcher("dashboard.jsp");
     }
-//    else if (account!=null && roleName.equalsIgnoreCase("user")){
-//      session.setAttribute("fullName", account.getFullName());
-//      session.setAttribute("phone", account.getPhone());
-//      requestDispatcher = req.getRequestDispatcher("dashboard1.jsp");
-//    }
+    else if (account!=null && roleName.equalsIgnoreCase("user")){
+      session.setAttribute("fullName", account.getFullName());
+      session.setAttribute("phone", account.getPhone());
+      requestDispatcher = req.getRequestDispatcher("dashboard1.jsp");
+    }
 
 
     else {
